@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10131a">
+  <meta name="description" content="freepluszero - مشاركة نصوصك برابط مباشر وواضح.">
+  <title>freepluszero | مشاركة النصوص</title>
+  <link rel="icon" type="image/jpeg" href="assets/freepluszero.jpg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="app-page">
+  <header class="app-header">
+    <div class="header-content">
+      <a class="brand" href="/" aria-label="freepluszero - الصفحة الرئيسية">
+        <img src="assets/freepluszero.jpg" alt="freepluszero">
+        <span>freepluszero</span>
+      </a>
+      <nav class="nav-links" aria-label="القائمة الرئيسية">
+        <a class="active" href="/">نص جديد</a>
+        <a href="#recent">كيف يعمل</a>
+      </nav>
+      <div class="header-note"><span></span> متاح الآن</div>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <section class="intro-band">
+      <div>
+        <p class="eyebrow">TEXT SHARING, DONE RIGHT</p>
+        <h1>اكتب. أنشئ الرابط. شارك.</h1>
+        <p>نصك له صفحة مستقلة ورابط قصير يمكن فتحه من أي جهاز.</p>
+      </div>
+      <div class="intro-stamp" aria-hidden="true"><span>FPZ</span><small>TEXT HOST</small></div>
+    </section>
+
+    <section class="workspace">
+      <form class="composer" id="pasteForm">
+        <div class="composer-head">
+          <div>
+            <p class="section-kicker">NEW PASTE</p>
+            <h2>المحتوى</h2>
+          </div>
+          <output class="char-count" id="textCounter">0 حرف</output>
+        </div>
+
+        <div class="editor-wrap">
+          <div class="editor-toolbar" aria-hidden="true">
+            <span>Plain text editor</span>
+            <span id="editorStatus">جاهز للحفظ</span>
+          </div>
+          <label class="sr-only" for="textBody">النص</label>
+          <textarea id="textBody" maxlength="100000" rows="17" autofocus placeholder="اكتب أو الصق النص الذي تريد مشاركته هنا..."></textarea>
+        </div>
+
+        <div class="details-divider"><span>إعدادات النص</span></div>
+        <div class="details-grid">
+          <label class="control-field">
+            <span>العنوان</span>
+            <input id="textTitle" type="text" maxlength="90" placeholder="نص بدون عنوان">
+          </label>
+          <label class="control-field">
+            <span>نوع النص</span>
+            <select id="textSyntax">
+              <option value="text">نص عادي</option>
+              <option value="code">كود</option>
+              <option value="json">JSON</option>
+              <option value="markdown">Markdown</option>
+            </select>
+          </label>
+          <label class="control-field">
+            <span>مدة الحفظ</span>
+            <select id="textExpiry">
+              <option value="never">بدون انتهاء</option>
+              <option value="day">24 ساعة</option>
+              <option value="week">7 أيام</option>
+              <option value="month">30 يومًا</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="composer-footer">
+          <div class="read-only-note"><b aria-hidden="true">✓</b><span>صفحة المشاركة للقراءة فقط</span></div>
+          <div class="submit-actions">
+            <button class="button secondary" id="clearButton" type="button">مسح</button>
+            <button class="button primary" id="submitButton" type="submit">إنشاء رابط المشاركة <span aria-hidden="true">←</span></button>
+          </div>
+        </div>
+      </form>
+
+      <aside class="sidebar" id="recent">
+        <section class="sidebar-section">
+          <p class="section-kicker">SHARE IN SECONDS</p>
+          <h2>رابط واحد يكفي.</h2>
+          <p>بعد الحفظ يأخذ النص صفحة خاصة به، من دون محرر أو إمكانية تعديل للزائر.</p>
+        </section>
+        <section class="sidebar-section steps">
+          <div class="step"><span>01</span><div><b>اكتب النص</b><small>أو الصقه كما هو</small></div></div>
+          <div class="step"><span>02</span><div><b>أنشئ رابطًا</b><small>مع عنوان وإعدادات حفظ</small></div></div>
+          <div class="step"><span>03</span><div><b>شارك الصفحة</b><small>تظهر للقراءة بوضوح</small></div></div>
+        </section>
+        <section class="sidebar-section support-section">
+          <div class="support-mark" aria-hidden="true">+</div>
+          <div><b>freepluszero</b><small>Text sharing service</small></div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="share-result" id="resultPanel" hidden aria-live="polite">
+      <div class="result-success"><span aria-hidden="true">✓</span><div><b>تم إنشاء الرابط</b><small>صفحة النص جاهزة للمشاركة</small></div></div>
+      <div class="share-link-row">
+        <input id="shareUrl" type="text" readonly aria-label="رابط النص">
+        <button class="copy-link" id="copyButton" type="button" title="نسخ الرابط" aria-label="نسخ الرابط">⧉</button>
+      </div>
+      <div class="share-actions">
+        <button id="openButton" type="button">فتح صفحة النص</button>
+        <a id="telegramShare" href="#" target="_blank" rel="noopener">تليجرام</a>
+        <a id="whatsappShare" href="#" target="_blank" rel="noopener">واتساب</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer"><span>freepluszero</span><span>© 2026</span></footer>
+
+  <div class="telegram-float" id="floatingTelegram">
+    <a href="https://t.me/gumball_Season8" target="_blank" rel="noopener" title="تليجرام freepluszero"><img src="assets/telegram.png" alt="تليجرام"></a>
+    <button id="hideTelegram" type="button" aria-label="إخفاء زر تليجرام">×</button>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
