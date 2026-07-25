@@ -1,4 +1,4 @@
-const CONFIG = { telegramUrl: "https://t.me/gumball_Season8", telegramHiddenKey: "freepluszero_hide_telegram_until" };
+const CONFIG = { telegramUrl: "https://t.me/freepluszero", telegramHiddenKey: "freepluszero_hide_telegram_until" };
 const $ = (id) => document.getElementById(id);
 const els = {
   form: $("pasteForm"), body: $("textBody"), title: $("textTitle"), syntax: $("textSyntax"), expiry: $("textExpiry"),
