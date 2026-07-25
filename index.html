@@ -141,11 +141,12 @@
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <!-- Existing site logic — unchanged, same file/functions as before -->
+  <!-- Same script.js as before — now the drop-in version that talks to
+       /api/pastes and builds /p/{id} links exactly like the old site. -->
   <script src="script.js"></script>
 
-  <!-- Added only for the EN/AR language switch. Does not touch #textCounter, #editorStatus,
-       #shareUrl or #toast — those stay fully controlled by script.js as before. -->
+  <!-- EN/AR language switch. Now also pings script.js (window.fnLangChanged)
+       so counter/status text updates immediately on toggle. -->
   <script>
     (function () {
       function fnSetLang(lang) {
@@ -163,6 +164,7 @@
           var val = lang === 'ar' ? el.getAttribute('data-ar-ph') : el.getAttribute('data-en-ph');
           if (val !== null) el.setAttribute('placeholder', val);
         });
+        if (window.fnLangChanged) window.fnLangChanged(lang);
       }
       window.fnSetLang = fnSetLang;
     })();
