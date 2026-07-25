@@ -1,57 +1,55 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#10131a">
-  <meta name="robots" content="noindex">
-  <title>نص مشترك | freepluszero</title>
-  <link rel="icon" type="image/jpeg" href="assets/freepluszero.jpg">
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10131a">
+<meta name="robots" content="noindex">
+<title>نص مشترك | freepluszero</title>
+<link rel="icon" type="image/jpeg" href="/assets/freepluszero.jpg">
+<link rel="stylesheet" href="/style.css">
 </head>
 <body class="reader-page">
-  <header class="app-header reader-header">
-    <div class="header-content">
-      <a class="brand" href="/" aria-label="freepluszero - الصفحة الرئيسية"><img src="assets/freepluszero.jpg" alt="freepluszero"><span>freepluszero</span></a>
-      <a class="new-paste-link" href="/">+ نص جديد</a>
-    </div>
-  </header>
-
-  <main class="reader-main">
-    <section class="reader-loading" id="loadingView"><span></span><p>جارٍ فتح النص...</p></section>
-    <section class="reader-card" id="pasteView" hidden>
-      <div class="reader-heading">
-        <div>
-          <p class="section-kicker">SHARED TEXT</p>
-          <h1 id="sharedTitle">نص بدون عنوان</h1>
-        </div>
-        <div class="reader-actions">
-          <button class="button secondary compact" id="downloadButton" type="button">تنزيل TXT</button>
-          <button class="button primary compact" id="copyTextButton" type="button">نسخ النص</button>
-        </div>
-      </div>
-      <div class="reader-meta"><span id="sharedDate"></span><span id="sharedViews"></span><span id="sharedType"></span></div>
-      <article class="text-reader" id="sharedText"></article>
-      <div class="reader-bottom">
-        <span>تمت المشاركة عبر <b>freepluszero</b></span>
-        <div><a id="telegramShare" href="#" target="_blank" rel="noopener">تليجرام</a><a id="whatsappShare" href="#" target="_blank" rel="noopener">واتساب</a></div>
-      </div>
-    </section>
-    <section class="not-found" id="notFoundView" hidden>
-      <div class="not-found-mark">!</div>
-      <p class="section-kicker">404</p>
-      <h1>هذا النص غير متاح</h1>
-      <p>ربما انتهت مدة حفظه أو أن الرابط غير صحيح.</p>
-      <a class="button primary" href="/">إنشاء نص جديد</a>
-    </section>
-  </main>
-
-  <footer class="app-footer"><span>freepluszero</span><span>Shared text page</span></footer>
-  <div class="telegram-float" id="floatingTelegram">
-    <a href="https://t.me/gumball_Season8" target="_blank" rel="noopener" title="تليجرام freepluszero"><img src="assets/telegram.png" alt="تليجرام"></a>
-    <button id="hideTelegram" type="button" aria-label="إخفاء زر تليجرام">×</button>
-  </div>
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="paste.js"></script>
+<header class="app-header reader-header">
+<div class="header-content">
+<a class="brand" href="/" aria-label="freepluszero - الصفحة الرئيسية"><img src="/assets/freepluszero.jpg" alt="freepluszero"><span>freepluszero</span></a>
+<a class="new-paste-link" href="/">+ نص جديد</a>
+</div>
+</header>
+<main class="reader-main">
+<section class="reader-loading" id="loadingView"><span></span><p>جارٍ فتح النص...</p></section>
+<section class="reader-card" id="pasteView" hidden>
+<div class="reader-heading">
+<div>
+<p class="section-kicker">SHARED TEXT</p>
+<h1 id="sharedTitle">نص بدون عنوان</h1>
+</div>
+<div class="reader-actions">
+<button class="button secondary compact" id="downloadButton" type="button">تنزيل TXT</button>
+<button class="button primary compact" id="copyTextButton" type="button">نسخ النص</button>
+</div>
+</div>
+<div class="reader-meta"><span id="sharedDate"></span><span id="sharedViews"></span><span id="sharedType"></span></div>
+<article class="text-reader" id="sharedText"></article>
+<div class="reader-bottom">
+<span>تمت المشاركة عبر <b>freepluszero</b></span>
+<div><a id="telegramShare" href="#" target="_blank" rel="noopener">تليجرام</a><a id="whatsappShare" href="#" target="_blank" rel="noopener">واتساب</a></div>
+</div>
+</section>
+<section class="not-found" id="notFoundView" hidden>
+<div class="not-found-mark">!</div>
+<p class="section-kicker">404</p>
+<h1>هذا النص غير متاح</h1>
+<p>ربما انتهت مدة حفظه أو أن الرابط غير صحيح.</p>
+<a class="button primary" href="/">إنشاء نص جديد</a>
+</section>
+</main>
+<footer class="app-footer"><span>freepluszero</span><span>Shared text page</span></footer>
+<div class="telegram-float" id="floatingTelegram">
+<a href="https://t.me/gumball_Season8" target="_blank" rel="noopener" title="تليجرام freepluszero"><img src="/assets/telegram.png" alt="تليجرام"></a>
+<button id="hideTelegram" type="button" aria-label="إخفاء زر تليجرام">×</button>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="/paste.js"></script>
 </body>
 </html>
