@@ -1,26 +1,32 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr" id="htmlRoot">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#10131a">
-  <meta name="description" content="freepluszero - مشاركة نصوصك برابط مباشر وواضح.">
-  <title>freepluszero | مشاركة النصوص</title>
+  <meta name="theme-color" content="#141d27">
+  <meta name="description" content="freepluszero - share your text with a direct, clear link.">
+  <title>freepluszero | Share text</title>
   <link rel="icon" type="image/jpeg" href="assets/freepluszero.jpg">
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="app-page">
   <header class="app-header">
     <div class="header-content">
-      <a class="brand" href="/" aria-label="freepluszero - الصفحة الرئيسية">
+      <a class="brand" href="/" aria-label="freepluszero - home">
         <img src="assets/freepluszero.jpg" alt="freepluszero">
         <span>freepluszero</span>
       </a>
-      <nav class="nav-links" aria-label="القائمة الرئيسية">
-        <a class="active" href="/">نص جديد</a>
-        <a href="#recent">كيف يعمل</a>
+      <nav class="nav-links" aria-label="Main menu">
+        <a class="active" href="/" data-en="New note" data-ar="نص جديد">New note</a>
+        <a href="#recent" data-en="How it works" data-ar="كيف يعمل">How it works</a>
       </nav>
-      <div class="header-note"><span></span> متاح الآن</div>
+      <div class="header-controls">
+        <div class="header-note"><span></span><span data-en="Live now" data-ar="متاح الآن">Live now</span></div>
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button type="button" id="btnLangEn" class="is-active" onclick="fnSetLang('en')">EN</button>
+          <button type="button" id="btnLangAr" onclick="fnSetLang('ar')">AR</button>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -28,8 +34,8 @@
     <section class="intro-band">
       <div>
         <p class="eyebrow">TEXT SHARING, DONE RIGHT</p>
-        <h1>اكتب. أنشئ الرابط. شارك.</h1>
-        <p>نصك له صفحة مستقلة ورابط قصير يمكن فتحه من أي جهاز.</p>
+        <h1 data-en="Write it. Create the link. Share it." data-ar="اكتب. أنشئ الرابط. شارك.">Write it. Create the link. Share it.</h1>
+        <p data-en="Your text gets its own page and a short link you can open from any device." data-ar="نصك له صفحة مستقلة ورابط قصير يمكن فتحه من أي جهاز.">Your text gets its own page and a short link you can open from any device.</p>
       </div>
       <div class="intro-stamp" aria-hidden="true"><span>FPZ</span><small>TEXT HOST</small></div>
     </section>
@@ -39,51 +45,58 @@
         <div class="composer-head">
           <div>
             <p class="section-kicker">NEW PASTE</p>
-            <h2>المحتوى</h2>
+            <h2 data-en="Content" data-ar="المحتوى">Content</h2>
           </div>
-          <output class="char-count" id="textCounter">0 حرف</output>
+          <output class="char-count" id="textCounter">0 characters</output>
         </div>
 
         <div class="editor-wrap">
           <div class="editor-toolbar" aria-hidden="true">
             <span>Plain text editor</span>
-            <span id="editorStatus">جاهز للحفظ</span>
+            <span id="editorStatus">Ready to save</span>
           </div>
-          <label class="sr-only" for="textBody">النص</label>
-          <textarea id="textBody" maxlength="100000" rows="17" autofocus placeholder="اكتب أو الصق النص الذي تريد مشاركته هنا..."></textarea>
+          <label class="sr-only" for="textBody">Text</label>
+          <textarea id="textBody" maxlength="100000" rows="17" autofocus
+            data-en-ph="Write or paste the text you want to share here..."
+            data-ar-ph="اكتب أو الصق النص الذي تريد مشاركته هنا..."
+            placeholder="Write or paste the text you want to share here..."></textarea>
         </div>
 
-        <div class="details-divider"><span>إعدادات النص</span></div>
+        <div class="details-divider"><span data-en="Note settings" data-ar="إعدادات النص">Note settings</span></div>
         <div class="details-grid">
           <label class="control-field">
-            <span>العنوان</span>
-            <input id="textTitle" type="text" maxlength="90" placeholder="نص بدون عنوان">
+            <span data-en="Title" data-ar="العنوان">Title</span>
+            <input id="textTitle" type="text" maxlength="90"
+              data-en-ph="Untitled note" data-ar-ph="نص بدون عنوان" placeholder="Untitled note">
           </label>
           <label class="control-field">
-            <span>نوع النص</span>
+            <span data-en="Type" data-ar="نوع النص">Type</span>
             <select id="textSyntax">
-              <option value="text">نص عادي</option>
-              <option value="code">كود</option>
-              <option value="json">JSON</option>
-              <option value="markdown">Markdown</option>
+              <option value="text" data-en="Plain text" data-ar="نص عادي">Plain text</option>
+              <option value="code" data-en="Code" data-ar="كود">Code</option>
+              <option value="json" data-en="JSON" data-ar="JSON">JSON</option>
+              <option value="markdown" data-en="Markdown" data-ar="Markdown">Markdown</option>
             </select>
           </label>
           <label class="control-field">
-            <span>مدة الحفظ</span>
+            <span data-en="Save duration" data-ar="مدة الحفظ">Save duration</span>
             <select id="textExpiry">
-              <option value="never">بدون انتهاء</option>
-              <option value="day">24 ساعة</option>
-              <option value="week">7 أيام</option>
-              <option value="month">30 يومًا</option>
+              <option value="never" data-en="No expiry" data-ar="بدون انتهاء">No expiry</option>
+              <option value="day" data-en="24 hours" data-ar="24 ساعة">24 hours</option>
+              <option value="week" data-en="7 days" data-ar="7 أيام">7 days</option>
+              <option value="month" data-en="30 days" data-ar="30 يومًا">30 days</option>
             </select>
           </label>
         </div>
 
         <div class="composer-footer">
-          <div class="read-only-note"><b aria-hidden="true">✓</b><span>صفحة المشاركة للقراءة فقط</span></div>
+          <div class="read-only-note"><b aria-hidden="true">✓</b><span data-en="The share page is read-only" data-ar="صفحة المشاركة للقراءة فقط">The share page is read-only</span></div>
           <div class="submit-actions">
-            <button class="button secondary" id="clearButton" type="button">مسح</button>
-            <button class="button primary" id="submitButton" type="submit">إنشاء رابط المشاركة <span aria-hidden="true">←</span></button>
+            <button class="button secondary" id="clearButton" type="button" data-en="Clear" data-ar="مسح">Clear</button>
+            <button class="button primary" id="submitButton" type="submit">
+              <span data-en="Create share link" data-ar="إنشاء رابط المشاركة">Create share link</span>
+              <span class="arrow" aria-hidden="true">→</span>
+            </button>
           </div>
         </div>
       </form>
@@ -91,31 +104,31 @@
       <aside class="sidebar" id="recent">
         <section class="sidebar-section">
           <p class="section-kicker">SHARE IN SECONDS</p>
-          <h2>رابط واحد يكفي.</h2>
-          <p>بعد الحفظ يأخذ النص صفحة خاصة به، من دون محرر أو إمكانية تعديل للزائر.</p>
+          <h2 data-en="One link is enough." data-ar="رابط واحد يكفي.">One link is enough.</h2>
+          <p data-en="Once saved, your text gets its own page — no editor, and no way for visitors to change it." data-ar="بعد الحفظ يأخذ النص صفحة خاصة به، من دون محرر أو إمكانية تعديل للزائر.">Once saved, your text gets its own page — no editor, and no way for visitors to change it.</p>
         </section>
         <section class="sidebar-section steps">
-          <div class="step"><span>01</span><div><b>اكتب النص</b><small>أو الصقه كما هو</small></div></div>
-          <div class="step"><span>02</span><div><b>أنشئ رابطًا</b><small>مع عنوان وإعدادات حفظ</small></div></div>
-          <div class="step"><span>03</span><div><b>شارك الصفحة</b><small>تظهر للقراءة بوضوح</small></div></div>
+          <div class="step"><span>01</span><div><b data-en="Write the text" data-ar="اكتب النص">Write the text</b><small data-en="Or paste it as-is" data-ar="أو الصقه كما هو">Or paste it as-is</small></div></div>
+          <div class="step"><span>02</span><div><b data-en="Create a link" data-ar="أنشئ رابطًا">Create a link</b><small data-en="With a title and save settings" data-ar="مع عنوان وإعدادات حفظ">With a title and save settings</small></div></div>
+          <div class="step"><span>03</span><div><b data-en="Share the page" data-ar="شارك الصفحة">Share the page</b><small data-en="Opens clean for readers" data-ar="تظهر للقراءة بوضوح">Opens clean for readers</small></div></div>
         </section>
         <section class="sidebar-section support-section">
           <div class="support-mark" aria-hidden="true">+</div>
-          <div><b>freepluszero</b><small>Text sharing service</small></div>
+          <div><b>freepluszero</b><small data-en="Text sharing service" data-ar="خدمة مشاركة نصوص">Text sharing service</small></div>
         </section>
       </aside>
     </section>
 
     <section class="share-result" id="resultPanel" hidden aria-live="polite">
-      <div class="result-success"><span aria-hidden="true">✓</span><div><b>تم إنشاء الرابط</b><small>صفحة النص جاهزة للمشاركة</small></div></div>
+      <div class="result-success"><span aria-hidden="true">✓</span><div><b data-en="Link created" data-ar="تم إنشاء الرابط">Link created</b><small data-en="Your text page is ready to share" data-ar="صفحة النص جاهزة للمشاركة">Your text page is ready to share</small></div></div>
       <div class="share-link-row">
-        <input id="shareUrl" type="text" readonly aria-label="رابط النص">
-        <button class="copy-link" id="copyButton" type="button" title="نسخ الرابط" aria-label="نسخ الرابط">⧉</button>
+        <input id="shareUrl" type="text" readonly aria-label="Share link">
+        <button class="copy-link" id="copyButton" type="button" title="Copy link" aria-label="Copy link">⧉</button>
       </div>
       <div class="share-actions">
-        <button id="openButton" type="button">فتح صفحة النص</button>
-        <a id="telegramShare" href="#" target="_blank" rel="noopener">تليجرام</a>
-        <a id="whatsappShare" href="#" target="_blank" rel="noopener">واتساب</a>
+        <button id="openButton" type="button" data-en="Open text page" data-ar="فتح صفحة النص">Open text page</button>
+        <a id="telegramShare" href="#" target="_blank" rel="noopener">Telegram</a>
+        <a id="whatsappShare" href="#" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </section>
   </main>
@@ -123,10 +136,36 @@
   <footer class="app-footer"><span>freepluszero</span><span>© 2026</span></footer>
 
   <div class="telegram-float" id="floatingTelegram">
-    <a href="https://t.me/gumball_Season8" target="_blank" rel="noopener" title="تليجرام freepluszero"><img src="assets/telegram.png" alt="تليجرام"></a>
-    <button id="hideTelegram" type="button" aria-label="إخفاء زر تليجرام">×</button>
+    <a href="https://t.me/gumball_Season8" target="_blank" rel="noopener" title="freepluszero on Telegram"><img src="assets/telegram.png" alt="Telegram"></a>
+    <button id="hideTelegram" type="button" aria-label="Hide Telegram button">×</button>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Existing site logic — unchanged, same file/functions as before -->
   <script src="script.js"></script>
+
+  <!-- Added only for the EN/AR language switch. Does not touch #textCounter, #editorStatus,
+       #shareUrl or #toast — those stay fully controlled by script.js as before. -->
+  <script>
+    (function () {
+      function fnSetLang(lang) {
+        var html = document.getElementById('htmlRoot');
+        html.setAttribute('lang', lang);
+        html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+        document.getElementById('btnLangEn').classList.toggle('is-active', lang === 'en');
+        document.getElementById('btnLangAr').classList.toggle('is-active', lang === 'ar');
+
+        document.querySelectorAll('[data-en]').forEach(function (el) {
+          var val = lang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-en');
+          if (val !== null) el.textContent = val;
+        });
+        document.querySelectorAll('[data-en-ph]').forEach(function (el) {
+          var val = lang === 'ar' ? el.getAttribute('data-ar-ph') : el.getAttribute('data-en-ph');
+          if (val !== null) el.setAttribute('placeholder', val);
+        });
+      }
+      window.fnSetLang = fnSetLang;
+    })();
+  </script>
 </body>
 </html>
