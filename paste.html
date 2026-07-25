@@ -1,59 +1,102 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr" id="htmlRoot">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#10131a">
-<meta name="robots" content="noindex">
-<title>نص مشترك | freepluszero</title>
-<link rel="icon" type="image/jpeg" href="/assets/freepluszero.jpg">
-<link rel="stylesheet" href="/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#141d27">
+  <meta name="robots" content="noindex">
+  <title>Shared text | freepluszero</title>
+  <link rel="icon" type="image/jpeg" href="/assets/freepluszero.jpg">
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body class="reader-page">
-<header class="app-header reader-header">
-<div class="header-content">
-<a class="brand" href="/" aria-label="freepluszero - الصفحة الرئيسية"><img src="/assets/freepluszero.jpg" alt="freepluszero"><span>freepluszero</span></a>
-<div class="header-actions">
-<button id="langToggle" class="button secondary compact" type="button" aria-label="Switch language / تبديل اللغة">EN</button>
-<a class="new-paste-link" href="/" data-i18n="newPaste">+ نص جديد</a>
-</div>
-</div>
-</header>
-<main class="reader-main">
-<section class="reader-loading" id="loadingView"><span></span><p data-i18n="loading">جارٍ فتح النص...</p></section>
-<section class="reader-card" id="pasteView" hidden>
-<div class="reader-heading">
-<div>
-<p class="section-kicker">SHARED TEXT</p>
-<h1 id="sharedTitle">نص بدون عنوان</h1>
-</div>
-<div class="reader-actions">
-<button class="button secondary compact" id="downloadButton" type="button" data-i18n="downloadTxt">تنزيل TXT</button>
-<button class="button primary compact" id="copyTextButton" type="button" data-i18n="copyText">نسخ النص</button>
-</div>
-</div>
-<div class="reader-meta"><span id="sharedDate"></span><span id="sharedViews"></span><span id="sharedType"></span></div>
-<article class="text-reader" id="sharedText"></article>
-<div class="reader-bottom">
-<span><span data-i18n="sharedVia">تمت المشاركة عبر</span> <b>freepluszero</b></span>
-<div><a id="telegramShare" href="#" target="_blank" rel="noopener" data-i18n="telegram">تليجرام</a><a id="whatsappShare" href="#" target="_blank" rel="noopener" data-i18n="whatsapp">واتساب</a></div>
-</div>
-</section>
-<section class="not-found" id="notFoundView" hidden>
-<div class="not-found-mark">!</div>
-<p class="section-kicker">404</p>
-<h1 data-i18n="notFoundTitle">هذا النص غير متاح</h1>
-<p data-i18n="notFoundBody">ربما انتهت مدة حفظه أو أن الرابط غير صحيح.</p>
-<a class="button primary" href="/" data-i18n="createNew">إنشاء نص جديد</a>
-</section>
-</main>
-<footer class="app-footer"><span>freepluszero</span><span>Shared text page</span></footer>
-<div class="telegram-float" id="floatingTelegram">
-<a href="https://t.me/gumball_Season8" target="_blank" rel="noopener" title="تليجرام freepluszero" data-i18n-attr="title:telegramTitle"><img src="/assets/telegram.png" alt="تليجرام"></a>
-<button id="hideTelegram" type="button" aria-label="إخفاء زر تليجرام" data-i18n-attr="aria-label:hideTelegram">×</button>
-</div>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script src="/i18n.js"></script>
-<script src="/paste.js"></script>
+  <header class="app-header reader-header">
+    <div class="header-content">
+      <a class="brand" href="/" aria-label="freepluszero - home">
+        <img src="/assets/freepluszero.jpg" alt="freepluszero">
+        <span>freepluszero</span>
+      </a>
+      <div class="header-controls">
+        <a class="button secondary compact new-paste-link" href="/" data-en="+ New note" data-ar="+ نص جديد">+ New note</a>
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button type="button" id="btnLangEn" class="is-active" onclick="fnSetLang('en')">EN</button>
+          <button type="button" id="btnLangAr" onclick="fnSetLang('ar')">AR</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="reader-main">
+    <section class="reader-loading" id="loadingView">
+      <span></span>
+      <p data-en="Opening the text..." data-ar="جارٍ فتح النص...">Opening the text...</p>
+    </section>
+
+    <section class="reader-card" id="pasteView" hidden>
+      <div class="reader-heading">
+        <div>
+          <p class="section-kicker">SHARED TEXT</p>
+          <h1 id="sharedTitle">Untitled note</h1>
+        </div>
+        <div class="reader-actions">
+          <button class="button secondary compact" id="downloadButton" type="button" data-en="Download TXT" data-ar="تنزيل TXT">Download TXT</button>
+          <button class="button primary compact" id="copyTextButton" type="button" data-en="Copy text" data-ar="نسخ النص">Copy text</button>
+        </div>
+      </div>
+      <div class="reader-meta">
+        <span id="sharedDate"></span>
+        <span id="sharedViews"></span>
+        <span id="sharedType"></span>
+      </div>
+      <article class="text-reader" id="sharedText"></article>
+      <div class="reader-bottom">
+        <span><span data-en="Shared via" data-ar="تمت المشاركة عبر">Shared via</span> <b>freepluszero</b></span>
+        <div>
+          <a id="telegramShare" href="#" target="_blank" rel="noopener" data-en="Telegram" data-ar="تليجرام">Telegram</a>
+          <a id="whatsappShare" href="#" target="_blank" rel="noopener" data-en="WhatsApp" data-ar="واتساب">WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="not-found" id="notFoundView" hidden>
+      <div class="not-found-mark">!</div>
+      <p class="section-kicker">404</p>
+      <h1 data-en="This text isn't available" data-ar="هذا النص غير متاح">This text isn't available</h1>
+      <p data-en="It may have expired, or the link is incorrect." data-ar="ربما انتهت مدة حفظه أو أن الرابط غير صحيح.">It may have expired, or the link is incorrect.</p>
+      <a class="button primary" href="/" data-en="Create a new note" data-ar="إنشاء نص جديد">Create a new note</a>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <span>freepluszero</span>
+    <span data-en="Shared text page" data-ar="صفحة نص مشترك">Shared text page</span>
+  </footer>
+
+  <div class="telegram-float" id="floatingTelegram">
+    <a href="https://t.me/gumball_Season8" target="_blank" rel="noopener" title="freepluszero on Telegram"><img src="/assets/telegram.png" alt="Telegram"></a>
+    <button id="hideTelegram" type="button" aria-label="Hide Telegram button">×</button>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Same EN/AR mechanism as index.html (no separate i18n.js dependency —
+       kept consistent with the rest of the modern site). -->
+  <script>
+    (function () {
+      function fnSetLang(lang) {
+        var html = document.getElementById('htmlRoot');
+        html.setAttribute('lang', lang);
+        html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+        document.getElementById('btnLangEn').classList.toggle('is-active', lang === 'en');
+        document.getElementById('btnLangAr').classList.toggle('is-active', lang === 'ar');
+        document.querySelectorAll('[data-en]').forEach(function (el) {
+          var val = lang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-en');
+          if (val !== null) el.textContent = val;
+        });
+        if (window.fnLangChanged) window.fnLangChanged(lang);
+      }
+      window.fnSetLang = fnSetLang;
+    })();
+  </script>
+  <script src="/paste.js"></script>
 </body>
 </html>
